@@ -5,3 +5,9 @@
 &nbsp;&nbsp;&nbsp;<%= @user.email %>
 </p>
 <%= link_to 'プロフィールの変更', edit_user_registration_path %>
+<p>
+<% if current_user.admin? && !current_user?(user) %>
+    | <%= link_to "削除", user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+</p>

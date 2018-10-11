@@ -8,7 +8,9 @@
           <% if user_signed_in? %>
           <li><%= link_to "Home",   root_path %></li>
           <li><%= link_to "Help",   help_path %></li>
-          <li><%= link_to "マイページ", users_show_path %></li>
+          <!-- この点を修正した-->
+          <li><%= link_to "マイページ", user_path(current_user) %></li>
+          <li><%= link_to "ユーザーリスト", users_path %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
           <% else %>
           <li><%= link_to "Home",   root_path %></li>
