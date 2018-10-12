@@ -112,3 +112,15 @@ footer {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+/* flash */
+.flash {
+  color: white;
+  text-align: center;
+  &__alert{
+    background-color: red;
+  }
+  &__notice {
+    background-color: blue;
+  }
+}

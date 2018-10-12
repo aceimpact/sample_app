@@ -31,6 +31,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find!(params[:id]).destroy
+    flash[:notice] = "削除しました"
     redirect_to users_url
   end
 

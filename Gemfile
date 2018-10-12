@@ -14,6 +14,7 @@ gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'devise'
 gem 'letter_opener'
+gem 'haml-rails'
 
 group :development, :test do
   gem 'sqlite3'
