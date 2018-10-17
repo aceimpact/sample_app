@@ -1,13 +1,27 @@
 <% provide(:title,"マイページ") %>
-<h1><%= @user.name %>さんのマイページ</h1>
-<p>
-<%= @user.name %>さんのメールアドレス<br>
-&nbsp;&nbsp;&nbsp;<%= @user.email %>
-</p>
-<%= link_to 'プロフィールの変更', edit_user_registration_path %>
-<p>
-<% if current_user.admin? && !current_user?(user) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+      <%= gravatar_for @user %>
+      <%= @user.name %>さんのマイページ</h1>
+      <p>
+      <%= @user.name %>さんのメールアドレス<br>
+      &nbsp;&nbsp;&nbsp;<%= @user.email %>
+      </p>
+      <%= link_to 'プロフィールの変更', edit_user_registration_path %>
+      <p>
+      <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "削除", user, method: :delete,
                                   data: { confirm: "You sure?" } %>
-  <% end %>
-</p>
+      <% end %>
+      </p>
+<div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+  </div>
