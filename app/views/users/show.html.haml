@@ -1,0 +1,7 @@
+- provide(:title,"マイページ")
+%h1 #{@user.name}さんのマイページ
+%p
+  #{@user.name}さんのメールアドレス
+&nbsp;&nbsp;&nbsp; #{@user.email}
+%br
+  = link_to 'プロフィールの変更', edit_user_registration_path
