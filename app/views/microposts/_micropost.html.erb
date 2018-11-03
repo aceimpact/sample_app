@@ -11,12 +11,11 @@
         <%= link_to "delete", micropost, method: :delete,
                                          data: { confirm: "本当に削除しますか？" } %>
         <%= link_to "コメントする", new_comment_path %>
-        <!-- この部分のルートをどうすればいいか分からないです。
-          view/comments/show.html.erb
-          にリンクしたいです。
-      -->
       <% end %>
     </span>
+    <!-- コメントが表示されません。
+        この下の部分が違うのか、そもそもコメントがちゃんと保存できていないのか、エラーが出ないためがわかりません。
+   -->
     <span>
       <% micropost.comments.each do |comment| %>
       <%= comment.user.name %>
