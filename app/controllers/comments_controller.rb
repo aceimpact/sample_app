@@ -1,9 +1,5 @@
 class CommentsController < ApplicationController
 
-  def show    
-    @comment = Comment.find_by!(id: params[:id])
-  end
-
   def new
     @comment = Comment.new
   end
@@ -13,7 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = current_user.comments.build(comment_params)
+    @comment = Comment.new(comment_params)
     @comment.save
       redirect_to root_url
   end

@@ -15,7 +15,13 @@
           view/comments/show.html.erb
           にリンクしたいです。
       -->
-        <%= link_to "コメント一覧",  %>
       <% end %>
     </span>
+    <span>
+      <% micropost.comments.each do |comment| %>
+      <%= comment.user.name %>
+      <%= comment.content %>
+      <%= link_to "編集する", edit_comment_path(comment) %>
+      <% end %>
+  </span>
   </li>
