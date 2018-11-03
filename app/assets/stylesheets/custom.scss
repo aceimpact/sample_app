@@ -8,7 +8,7 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 101px;
+  padding-top: 60px;
 }
 
 section {
@@ -58,6 +58,10 @@ p {
 }
 
 /* header */
+
+.navbar-fixed-top {
+  height: 60px;
+}
 
 #logo {
   float: left;

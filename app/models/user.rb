@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   has_many :microposts, dependent: :destroy
+  has_many :comments
   validates :name, presence: {message: 'を入力してください'}
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

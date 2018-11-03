@@ -9,7 +9,13 @@
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
       <% if current_user == micropost.user %>
         <%= link_to "delete", micropost, method: :delete,
-                                         data: { confirm: "You sure?" } %>
+                                         data: { confirm: "本当に削除しますか？" } %>
+        <%= link_to "コメントする", new_comment_path %>
+        <!-- この部分のルートをどうすればいいか分からない
+          view/comments/show.html.erb
+          にリンクしたい。
+      -->
+        <%= link_to "コメント一覧",  %>
       <% end %>
     </span>
   </li>
