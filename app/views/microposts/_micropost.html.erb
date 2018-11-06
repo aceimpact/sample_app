@@ -10,12 +10,10 @@
       <% if current_user == micropost.user %>
         <%= link_to "delete", micropost, method: :delete,
                                          data: { confirm: "本当に削除しますか？" } %>
-        <%= link_to "コメントする", new_comment_path %>
+        <%= link_to "コメントする", new_micropost_comment_path(micropost) %>
       <% end %>
     </span>
-    <!-- コメントが表示されません。
-        この下の部分が違うのか、そもそもコメントがちゃんと保存できていないのか、エラーが出ないためがわかりません。
-   -->
+
     <span>
       <% micropost.comments.each do |comment| %>
       <%= comment.user.name %>

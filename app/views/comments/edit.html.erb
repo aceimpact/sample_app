@@ -1,1 +1,13 @@
-<h2>コメント編集</h2>
+<% provide(:title, 'コメント編集') %>
+
+<h1>コメント編集</h1>
+
+<%= form_for (@comment) do |form| %>
+<div class="field">
+  <%= form.text_area :content, label: "コメント", value: "#{@comment.content}" %>
+</div>
+
+<div class="actions">
+  <%= form.submit "更新する" %>
+</div>
+<% end %>

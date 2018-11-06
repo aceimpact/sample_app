@@ -4,14 +4,18 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
+
   def edit
     @comment = Comment.find_by!(id: params[:id])
   end
 
   def create
-    @comment = Comment.new(comment_params)
-    @comment.save
+    @micropost = Micropost.find(params[:id])
+    @comment = @micropost.comments.build(user_id: current_user.id,
+                                         content: comment_params[:content])
+    if @comment.save
       redirect_to root_url
+    end
   end
 
   def update
@@ -19,12 +23,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find!(params[:id]).destroy
+    @comment = Comment.find!(params[:id])
+    @comment.destroy
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :user_id, :micropost_id)
   end
+
 end
