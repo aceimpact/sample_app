@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, :only => [:index, :show, :update,:destroy]
 
-  resources :microposts, :only => [:create, :destroy, :show], shallow: true do
+  resources :microposts, :only => [:create, :destroy, :show] do
     resources :comments
   end
 

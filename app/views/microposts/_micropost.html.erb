@@ -16,9 +16,9 @@
 
     <span>
       <% micropost.comments.each do |comment| %>
-      <%= comment.user.name %>
-      <%= comment.content %>
-      <%= link_to "編集する", edit_comment_path(comment) %>
+        <%= comment.user.name %>
+        <%= comment.content %>
+        <%= link_to "編集する", edit_micropost_comment_path(micropost, comment) %>
       <% end %>
   </span>
   </li>

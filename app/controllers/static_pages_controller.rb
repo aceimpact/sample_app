@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
-before_action :authenticate_user!, except:[:home,:help,:about,:contact]
+
+  skip_before_action :authenticate_user!, only:[:home,:help,:about,:contact]
 
   def home
     if user_signed_in?
@@ -16,5 +17,4 @@ before_action :authenticate_user!, except:[:home,:help,:about,:contact]
 
   def contact
   end
-
 end
