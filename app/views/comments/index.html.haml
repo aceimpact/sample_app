@@ -1,0 +1,12 @@
+- provide(:title, 'コメント一覧')
+
+%ul.mb-5
+- @micropost.comments.each do |comment|
+  %li.list-unstyled
+  = comment.user.name
+  %li.list-unstyled
+  &ensp;
+  = comment.content
+  %li.list-unstyled
+  = link_to "編集する", edit_micropost_comment_path(@micropost, comment)
+  %hr

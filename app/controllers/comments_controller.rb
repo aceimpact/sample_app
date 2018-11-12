@@ -1,7 +1,11 @@
 class CommentsController < ApplicationController
 
-  before_action :set_micropost, only: [:new,:edit,:create,:update,:destroy]
+  before_action :set_micropost, only: [:index,:new,:edit,:create,:update,:destroy]
   before_action :set_comment, only: [:edit,:update,:destroy]
+
+  def index
+    @user = User.find_by(params[:id])
+  end
 
   def new
     @comment = @micropost.comments.build

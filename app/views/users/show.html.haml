@@ -1,0 +1,26 @@
+- provide(:title,"マイページ")
+.row
+  %aside.col-4
+    %section.user_info
+      %h1.font-weight-bold.font-italic.text-success.text-center
+        = gravatar_for @user
+        = @user.name
+        さんのマイページ
+      %p
+      %p.text-center
+        = @user.name
+        さんのメールアドレス
+        %br/
+           #{@user.email}
+      %p
+        - if current_user.admin? && !current_user?(user)
+          | #{link_to "削除", user, method: :delete, data: { confirm: "You sure?" }}
+      .col-8
+        - if @user.microposts.any?
+          %h3
+            Microposts (#{@user.microposts.count})
+          %ol.microposts
+            = render @microposts
+          = will_paginate @microposts
+      %p
+      = link_to 'プロフィールを変更する', edit_user_registration_path, class: 'btn-link pull-right' 

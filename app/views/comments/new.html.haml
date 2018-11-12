@@ -1,0 +1,8 @@
+- provide(:title, 'コメント')
+.text-center
+  = form_for [@micropost, @comment]  do |f|
+    = f.label :content, "コメント"
+    %br/
+    = f.text_area :content
+    %br/
+    = f.submit "コメントする", class: "btn btn-primary"

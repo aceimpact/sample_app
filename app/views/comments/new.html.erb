@@ -1,9 +1,0 @@
-<h2>コメント</h2>
-
-<div class="text-center">
-  <%= form_for [@micropost, @comment]  do |f| %>
-    <%= f.label :content, "コメント" %><br />
-    <%= f.text_area :content %>
-    <%= f.submit "コメントする" %>
-  <% end %>
-</div>
