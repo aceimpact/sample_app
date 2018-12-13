@@ -10,12 +10,15 @@
       <% if current_user == micropost.user %>
         <%= link_to "delete", micropost, method: :delete,
                                          data: { confirm: "本当に削除しますか？" } %>
-        <%= link_to "コメントする", new_comment_path %>
-        <!-- この部分のルートをどうすればいいか分からない
-          view/comments/show.html.erb
-          にリンクしたい。
-      -->
-        <%= link_to "コメント一覧",  %>
+        <%= link_to "コメントする", new_micropost_comment_path(micropost) %>
       <% end %>
     </span>
+
+    <span>
+      <% micropost.comments.each do |comment| %>
+        <%= comment.user.name %>
+        <%= comment.content %>
+        <%= link_to "編集する", edit_micropost_comment_path(micropost, comment) %>
+      <% end %>
+  </span>
   </li>

@@ -1,34 +1,50 @@
 class CommentsController < ApplicationController
 
-  def show    
-    @comment = Comment.find_by!(id: params[:id])
-  end
+  before_action :set_micropost, only: [:new,:edit,:create,:update,:destroy]
+  before_action :set_comment, only: [:edit,:update,:destroy]
 
   def new
-    @comment = Comment.new
+    @comment = @micropost.comments.build
   end
 
+
   def edit
-    @comment = Comment.find_by!(id: params[:id])
   end
 
   def create
-    @comment = current_user.comments.build(comment_params)
-    @comment.save
+    @comment = @micropost.comments.build(user_id: current_user.id,
+                                         content: comment_params[:content])
+    if @comment.save
       redirect_to root_url
+    else
+      render :new
+    end
   end
 
   def update
-    @comment.update_attributes(comment_params)
+    if @comment.update(comment_params)
+      redirect_to root_url
+    else
+      render :edit
+    end
   end
 
   def destroy
-    Comment.find!(params[:id]).destroy
+   @comment.destroy!
+   redirect_to root_url
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :user_id, :micropost_id)
+  end
+
+  def set_micropost
+    @micropost = Micropost.find(params[:micropost_id])
+  end
+
+  def set_comment
+    @comment = @micropost.comments.find(params[:id])
   end
 end

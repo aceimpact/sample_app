@@ -22,6 +22,10 @@ group :development, :test do
   gem 'sqlite3'
   gem 'byebug',  '9.0.6', platform: :mri
   gem 'rspec-rails', '~> 3.6.0'
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
 end
 
 group :development do
