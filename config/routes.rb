@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :microposts, :only => [:create, :destroy, :show] do
     resources :comments
+    resources :likes, only: [:create, :destroy]
   end
 
   get '/help', to: 'static_pages#help'

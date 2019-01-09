@@ -12,3 +12,4 @@
       = link_to "コメントする", new_micropost_comment_path(micropost)
       - if micropost.comments.present?
         = link_to "コメント(#{micropost.comments.count})", micropost_comments_path(micropost)
+      = render partial: 'likes/like', locals: { micropost: micropost, likes: @likes }
